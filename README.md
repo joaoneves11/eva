@@ -275,11 +275,6 @@ curl http://192.168.4.1/test
 
 ### **Próximas Versões**:
 - 🔄 Screenshot funcional
-- 📊 Telemetria avançada
-- 🎯 Controle de velocidade
-- 📱 Múltiplos carrinhos
-- 🔒 Autenticação de segurança
-
 ---
 
 ## 🤝 Contribuição
@@ -297,34 +292,3 @@ curl http://192.168.4.1/test
 - 📚 Documentação
 - 🧪 Testes
 - 🎨 UI/UX
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 📞 Suporte
-
-### **Canais de Suporte**:
-- 📧 Email: suporte@uoli.com
-- 💬 Issues: [GitHub Issues](https://github.com/uoli/issues)
-- 📚 Documentação: [Wiki do Projeto](https://github.com/uoli/wiki)
-
-### **Recursos Úteis**:
-- 🔧 [Expo Documentation](https://docs.expo.dev/)
-- 🤖 [ESP32 Documentation](https://docs.espressif.com/)
-- 📱 [React Native Guide](https://reactnative.dev/docs/getting-started)
-
----
-
-<div align="center">
-
-**Desenvolvido com ❤️ para controle inteligente de carrinhos**
-
-![Made with](https://img.shields.io/badge/Made%20with-React%20Native-blue?style=flat-square&logo=react)
-![Powered by](https://img.shields.io/badge/Powered%20by-ESP32-green?style=flat-square&logo=arduino)
-
-</div>
