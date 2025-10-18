@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "uoli-expo",
+    "name": "UOLI - Controle de Carrinho",
     "slug": "uoli-expo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "uoliexpo",
     "userInterfaceStyle": "automatic",
