@@ -1,4 +1,4 @@
-# 🚗 UOLI - Sistema de Controle de Carrinho Inteligente
+# 🚗 UOLI - Sistema de Controle de Robo 
 
 <div align="center">
 
@@ -7,7 +7,7 @@
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 
-**Sistema completo de controle remoto para carrinho inteligente via WiFi**
+**Sistema completo de controle remoto para robo inteligente via WiFi**
 
 [📱 App Mobile](#-app-mobile) • [🤖 Arduino ESP32](#-arduino-esp32) • [🌐 Rede](#-configuração-de-rede) • [📚 Documentação](#-documentação)
 
@@ -17,7 +17,7 @@
 
 ## 🎯 Visão Geral
 
-O **UOLI** é um sistema completo de controle remoto para carrinho inteligente, desenvolvido com tecnologias modernas para oferecer uma experiência de controle intuitiva e responsiva.
+O **UOLI** é um sistema completo de controle remoto para robo inteligente, desenvolvido com tecnologias modernas para oferecer uma experiência de controle intuitiva e responsiva.
 
 ### ✨ Características Principais:
 - 🎮 **Controle Intuitivo**: Interface touch com botões direcionais
