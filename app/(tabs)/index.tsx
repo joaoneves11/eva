@@ -53,7 +53,6 @@ export default function TabOneScreen() {
   };
 
   const handleScreenshot = async () => {
-    // Funcionalidade de screenshot temporariamente desabilitada
     console.log('Screenshot functionality temporarily disabled');
   };
 

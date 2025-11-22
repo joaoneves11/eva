@@ -13,7 +13,7 @@ export default function TabTwoScreen() {
   const [totalCommands, setTotalCommands] = useState(0);
   const [lastCommand, setLastCommand] = useState('Nenhum');
   const [carController] = useState(new CarControlService());
-  const [isDemoMode, setIsDemoMode] = useState(true); // Modo demo ativo por padrão
+  const [isDemoMode, setIsDemoMode] = useState(true); 
 
   // Buscar dados do Arduino ou usar modo demo
   useEffect(() => {
