@@ -26,14 +26,14 @@ yarn
 yarn run android
 ```
 
- # UOLI — Mobile
+ # EVA — Mobile
 
  ## 👋 Introdução
 
- Este diretório contém o aplicativo mobile do projeto "UOLI — Controle de Carrinho". O app foi desenvolvido com TypeScript usando Expo (expo-router) e React Native.
+ Este diretório contém o aplicativo mobile do projeto "EVA — Controle de Carrinho". O app foi desenvolvido com TypeScript usando Expo (expo-router) e React Native.
 
  Informações rápidas do projeto:
- - Nome: `UOLI - Controle de Carrinho` (ver `app.json`)
+ - Nome: `EVA - Controle de Carrinho` (ver `app.json`)
  - SDK Expo: ~54 (conforme `package.json`)
  - Entrada do app: `expo-router/entry`
  - Orientação: `landscape` (configurada em `app.json`)

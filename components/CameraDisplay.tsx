@@ -1,39 +1,54 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Animated, Platform, StyleSheet, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
-import Colors from '../constants/Colors';
 
-interface CameraDisplayProps {
+// Defina a URL da câmera e cores (se não tiver Colors.ts, use um valor fixo)
+const CAMERA_URL = 'http://172.20.10.6:81/stream';
+const MAIN_COLOR = '#007AFF'; // Azul padrão do iOS (substitui Colors.main)
+const BLACK = '#000000';      // Substitui Colors.black
+
+interface StreamProps {
+  // Mantém a prop do segundo código
   cameraClosed: boolean;
 }
 
-const CameraDisplay: React.FC<CameraDisplayProps> = ({ cameraClosed }) => {
-  const url = 'http://192.168.4.1:81/stream';
+const ESP32CamStreamEnhanced: React.FC<StreamProps> = ({ cameraClosed }) => {
   
-  const [initialLoading, setInitialLoading] = useState<boolean>(true);
-  const [isWebViewLoading, setIsWebViewLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
-  const [loadingMessage, setLoadingMessage] = useState<string>("Carregando...");
+  // --- ESTADOS ---
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [isWebViewLoading, setIsWebViewLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("Carregando...");
   
-  const opacity = useRef<Animated.Value>(new Animated.Value(1)).current;
+  // Referência para a opacidade da animação
+  const opacity = useRef(new Animated.Value(1)).current;
+
+  // --- ANIMAÇÕES ---
 
   const fadeInAnimation = Animated.timing(opacity, {
     toValue: 1,
     duration: 1000,
-    useNativeDriver: true
+    useNativeDriver: Platform.OS !== 'web' // Web não suporta Native Driver
   });
 
   const fadeOutAnimation = Animated.timing(opacity, {
     toValue: 0,
     duration: 1000,
-    useNativeDriver: true
+    useNativeDriver: Platform.OS !== 'web'
   });
 
+  // --- HANDLERS DA WEBVIEW ---
+
+  // Simula onLoadStart
   function onStartLoading(): void {
     setIsWebViewLoading(true);
+    setError(false);
+    setLoadingMessage("Carregando...");
   }
 
+  // Simula onLoadEnd
   function onFinishLoading(): void {
+    // Adiciona um atraso para simular o tempo de carregamento no segundo código
     setTimeout(() => {
       setIsWebViewLoading(false);
       setInitialLoading(false);
@@ -41,55 +56,123 @@ const CameraDisplay: React.FC<CameraDisplayProps> = ({ cameraClosed }) => {
     }, 2000);
   }
 
+  // Simula onError / onHttpError
   function onError(): void {
     setIsWebViewLoading(false);
     setError(true);
     setLoadingMessage("Erro ao conectar com a câmera");
+    fadeInAnimation.start(); // Mostra o erro
   }
 
-  function handleCameraClosed(): void {
+  // --- LÓGICA DE FECHAMENTO DA CÂMERA ---
+
+  useEffect(() => {
     if (cameraClosed) {
-      fadeInAnimation.start();
-      setTimeout(() => {
+      // Se a câmera fechar: animação de escurecimento e reinício do estado de loading.
+      fadeInAnimation.start(() => {
         setIsWebViewLoading(true);
-      }, 1000);
+      });
       setLoadingMessage("Câmera fechada");
     } else if (!initialLoading) {
+      // Se a câmera reabrir: animação de clareamento (o WebView deve ser recarregado)
+      // Nota: o recarregamento explícito do WebView é complexo; aqui confiamos no estado.
       setIsWebViewLoading(false);
       fadeOutAnimation.start();
     }
+  }, [cameraClosed]);
+
+  // --- CONTEÚDO HTML/WEBVIEW ---
+
+  // HTML que renderiza o <img> MJPEG (usado no WebView e iframe)
+  const htmlContent = `
+    <html>
+      <body style="margin:0;padding:0;overflow:hidden;background:${BLACK};">
+        <img 
+          src="${CAMERA_URL}" 
+          style="width:100%;height:100%;object-fit:cover;"
+          onerror="window.ReactNativeWebView.postMessage('ERROR');"
+        />
+      </body>
+    </html>
+  `;
+  
+  // Função para lidar com mensagens postadas do HTML (erro)
+  const onMessage = (event: any) => {
+    if (event.nativeEvent.data === 'ERROR') {
+      onError();
+    }
+  };
+
+  // --- RENDERIZAÇÃO WEB (IFRAME) ---
+
+  if (Platform.OS === 'web') {
+    // Usamos um View para simular o 'loadingContainer' por cima do iframe
+    return (
+      <View style={styles.container}>
+        <iframe
+          srcDoc={htmlContent}
+          width="100%"
+          height="100%"
+          style={{
+            border: 'none',
+            backgroundColor: BLACK,
+            opacity: cameraClosed ? 0 : 1, // Esconde/mostra se fechado
+          }}
+          title="ESP32 Stream"
+        />
+        {(isWebViewLoading || cameraClosed || error) && (
+          <Animated.View style={[styles.loadingContainer, { opacity: opacity }]}>
+            <ActivityIndicator size="large" color={MAIN_COLOR} />
+            <Text style={styles.loadingText}>
+              {loadingMessage}
+            </Text>
+          </Animated.View>
+        )}
+      </View>
+    );
   }
 
-  useEffect(() => {
-    handleCameraClosed();
-  }, [cameraClosed]);
+  // --- RENDERIZAÇÃO MOBILE (WEBVIEW) ---
+
+  // O WebView só deve ser montado se não estiver fechado, para garantir que pare de carregar
+  const shouldRenderWebView = !cameraClosed && !error;
 
   return (
     <View style={styles.container}>
-      {isWebViewLoading && (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={Colors.main} />
-          <Animated.Text style={[styles.loadingText, { opacity }]}>
+      
+      {/* 1. O CONTEÚDO DE LOADING/ERRO/FECHADO */}
+      {(isWebViewLoading || error || cameraClosed) && (
+        <Animated.View style={[styles.loadingContainer, { opacity: opacity }]}>
+          <ActivityIndicator size="large" color={MAIN_COLOR} />
+          <Text style={styles.loadingText}>
             {loadingMessage}
-          </Animated.Text>
-        </View>
+          </Text>
+        </Animated.View>
       )}
 
-      {!isWebViewLoading && !cameraClosed && (
+      {/* 2. O WEBVIEW COM O STREAM (só renderiza se não houver erro ou não estiver fechado) */}
+      {shouldRenderWebView && (
         <WebView
-          source={{ uri: url }}
+          originWhitelist={['*']}
+          source={{ html: htmlContent }}
+          style={styles.webView}
           onLoadStart={onStartLoading}
           onLoadEnd={onFinishLoading}
+          // A função onError aqui só funciona para falhas de navegação do WebView
+          // Para falhas do <img> (como o 404), usamos a comunicação onMessage do HTML.
           onError={onError}
-          style={styles.webView}
-          userAgent="Chrome/67.0.3396.99Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Safari/537.36"
           onHttpError={onError}
+          onMessage={onMessage} // Recebe erro do JavaScript do HTML
+          javaScriptEnabled
+          domStorageEnabled
+          allowsInlineMediaPlayback
+          mediaPlaybackRequiresUserAction={false}
+          // Ajusta a opacidade para que a animação de fade-in/out da capa de loading funcione.
+          // Quando o WebView estiver carregando, ele estará sob a capa de loading,
+          // e o fadeOut fará o stream aparecer.
         />
       )}
-
-      {cameraClosed && (
-        <Animated.View style={[styles.darkCover, { opacity }]} />
-      )}
+      
     </View>
   );
 };
@@ -97,30 +180,26 @@ const CameraDisplay: React.FC<CameraDisplayProps> = ({ cameraClosed }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.black,
+    backgroundColor: BLACK,
   },
   loadingContainer: {
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.black,
+    backgroundColor: BLACK,
+    zIndex: 10, // Garante que a capa de loading fique por cima do WebView
   },
   loadingText: {
-    color: Colors.main,
+    color: MAIN_COLOR,
     fontSize: 16,
     marginTop: 10,
   },
   webView: {
     flex: 1,
-  },
-  darkCover: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: Colors.black,
-  },
+    // Garante que o WebView comece atrás da capa de loading
+    zIndex: 1, 
+    minHeight: 1, // Fix para bugs de renderização em alguns WebViews
+  }
 });
 
-export default CameraDisplay;
+export default ESP32CamStreamEnhanced;

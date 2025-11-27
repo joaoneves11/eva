@@ -4,7 +4,7 @@ export class CarControlService {
     baseUrl: string;
 
     constructor() {
-        this.baseUrl = "http://192.168.4.1";
+        this.baseUrl = "http://172.20.10.6";
     }
 
     async goForward() {

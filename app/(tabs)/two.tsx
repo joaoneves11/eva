@@ -110,7 +110,7 @@ export default function TabTwoScreen() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>🚗 UOLI Dashboard</Text>
+        <Text style={styles.title}>🚗 EVA Dashboard</Text>
         <Text style={styles.subtitle}>
           {isDemoMode ? 'Modo Demonstração' : 'Modo Arduino'}
         </Text>
@@ -232,9 +232,9 @@ export default function TabTwoScreen() {
           <Text style={styles.cardTitle}>Informações do Sistema</Text>
         </View>
         <View style={styles.infoContainer}>
-          <Text style={styles.infoText}>📱 App: UOLI v1.0.0</Text>
+          <Text style={styles.infoText}>📱 App: EVA v1.0.0</Text>
           <Text style={styles.infoText}>🤖 Arduino: ESP32</Text>
-          <Text style={styles.infoText}>🌐 Rede: UOLI_CAR</Text>
+          <Text style={styles.infoText}>🌐 Rede: EVA_CAR</Text>
           <Text style={styles.infoText}>📡 IP: 192.168.4.1</Text>
           <Text style={styles.infoText}>📹 Câmera: Ativa</Text>
         </View>

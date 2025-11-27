@@ -10,7 +10,7 @@ Aqui você encontra um histórico do que já foi desenvolvido e o que está send
 ### Semana 24-30 de agosto
 
 - Na aula de quinta-feira, realizada conversa com professor Nakano para buscar ideias de projeto
-- Projeto Uoli escolhido
+- Projeto criação de um robo semelhante ao Uoli
 - Ideia: Refazer o projeto antigo de outros alunos a partir do 0. Montar um novo carrinho e programar um novo aplicativo para controle do carrinho
 
 
@@ -80,10 +80,11 @@ Aqui você encontra um histórico do que já foi desenvolvido e o que está send
 - Desenvolvimento da conexão serial do arduino com ESP32
 
 ### Semana 16-22 de novembro
-
+- Compra da roda boba
 - Ajustes Conexão serial do arduino
-
+- Ajuste no access point para conexão no celular do Gustavo
+- Teste da movimentação e comando do front para o robo
 
 ### Semana 23-29 de novembro
-
+- Finalização do Robo, ajuste do front para caracterizar a eva inspirada na eva do walle
 - Apresentação final dia 27
