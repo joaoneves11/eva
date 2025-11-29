@@ -55,5 +55,5 @@ tft.fillRect(xBase - 70, yBase - 45, 180, 90, TFT_BLACK);
 * Board na Ino IDE: AI Thinker
 
 ## HARDWARE
- ![Imagem do Projeto](proj_images/adeef13d-1ba3-4490-9848-65793a54782c.jpeg)
+ ![Imagem do Projeto](../proj_images/adeef13d-1ba3-4490-9848-65793a54782c.jpeg)
 
