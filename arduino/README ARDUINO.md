@@ -49,7 +49,7 @@ int xBase = getPosi(x) + 20 + 40; // +40 para mover para a DIREITA
 tft.fillRect(xBase - 70, yBase - 45, 180, 90, TFT_BLACK);
 ```
 ## Local dos códigos e board para configuração na INO IDE
-Arduino: cod_completo_arduino_mega.ino
-*Board: arduino mega 2560
-*ESP32CAM: cod_completo_esp32_cam.ino
-*Board na Ino IDE: AI Thinker
+* Arduino: cod_completo_arduino_mega.ino
+* Board: arduino mega 2560
+* ESP32CAM: cod_completo_esp32_cam.ino
+* Board na Ino IDE: AI Thinker
