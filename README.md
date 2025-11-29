@@ -1,4 +1,4 @@
-# 🚗 UOLI - Sistema de Controle de Robo 
+# 🚗 Eva - Sistema de Controle de Robo 
 
 <div align="center">
 
@@ -13,11 +13,17 @@
 
 </div>
 
+## Referências e Créditos
+
+Este projeto foi desenvolvido com base no repositório [uoli](https://github.com/artcupelli/uoli). 
+
+O projeto original é um trabalho de IoT orientado pelo **Prof. Fábio Nakano** como parte da competência da disciplina **ACH2157 - Computação Física e Aplicações** da Escola de Artes, Ciências e Humanidades da Universidade de São Paulo (EACH-USP).
+
 ---
 
 ## 🎯 Visão Geral
 
-O **UOLI** é um sistema completo de controle remoto para robo inteligente, desenvolvido com tecnologias modernas para oferecer uma experiência de controle intuitiva e responsiva.
+O **# 🚗 Eva - Sistema de Controle de Robo ** é um sistema completo de controle remoto para robo inteligente, desenvolvido com tecnologias modernas para oferecer uma experiência de controle intuitiva e responsiva.
 
 ### ✨ Características Principais:
 - 🎮 **Controle Intuitivo**: Interface touch com botões direcionais
