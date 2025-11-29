@@ -53,3 +53,7 @@ tft.fillRect(xBase - 70, yBase - 45, 180, 90, TFT_BLACK);
 * Board: arduino mega 2560
 * ESP32CAM: cod_completo_esp32_cam.ino
 * Board na Ino IDE: AI Thinker
+
+## HARDWARE
+ ![Imagem do Projeto](proj_images/adeef13d-1ba3-4490-9848-65793a54782c.jpeg)
+
