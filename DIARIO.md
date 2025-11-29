@@ -10,12 +10,12 @@ Aqui você encontra um histórico do que já foi desenvolvido e o que está send
 ### Semana 24-30 de agosto
 
 - Na aula de quinta-feira, realizada conversa com professor Nakano para buscar ideias de projeto
-- Projeto criação de um robo semelhante ao Uoli
+- Projeto criação de um robo semelhante ao Uoli, criado anteriormente por outro grupo na disciplina (REPO: https://github.com/artcupelli/uoli)
 - Ideia: Refazer o projeto antigo de outros alunos a partir do 0. Montar um novo carrinho e programar um novo aplicativo para controle do carrinho
 
 
 ### Semana 31-06 de agosto à setembro
-
+- Nomear o robo como EVA
 - Teste para validar se os componentes estavam funcionando
 - Ligar o projeto antigo para ver como estava funcionando
 
@@ -72,12 +72,14 @@ Aqui você encontra um histórico do que já foi desenvolvido e o que está send
 
 - Camera funcionando pelo front, mas apenas via WEB. 
 - Conversas com o professor pra entender melhor o porque desse erro
+- Descobrimos posteriormente que o o nosso aplicativo de build usava internet então precisariamos estar conectados a internet para buildar pelo celular nosso app (Solução: criar um access na rede compartilhada do cel que tem acesso a internet)
 - Desenvolvimento da conexão serial do arduino com ESP32
 - Montagem do hardware
 
 ### Semana 09-15 de novembro
 
 - Desenvolvimento da conexão serial do arduino com ESP32
+- Descobrimos que nossa câmera anterior não poderia fazer conexão serial pegamos outra câmera com o nakano
 
 ### Semana 16-22 de novembro
 - Compra da roda boba
@@ -88,3 +90,5 @@ Aqui você encontra um histórico do que já foi desenvolvido e o que está send
 ### Semana 23-29 de novembro
 - Finalização do Robo, ajuste do front para caracterizar a eva inspirada na eva do walle
 - Apresentação final dia 27
+ ![Imagem do Projeto](proj_images/c6b91d47538de8534d5302bdb6135eb0.jpg)
+ ![Imagem do Projeto](proj_images/WhatsApp%20Image%202025-11-25%20at%2019.53.27.jpeg)

@@ -1,10 +1,12 @@
-# Uoli - Mobile
+# EVA - Mobile
 
 # 👋 Introdução
 
 Neste diretório contém a aplicação mobile desenvolvida para a comunicação com o carrinho.
 
 O app foi desenvolvido com linguagem **Typescript** utilizando a biblioteca **React Native.**
+
+O projeto utilizou como referência um projeto anterior realizado na disciplina: REPO: https://github.com/artcupelli/uoli
 
 ---
 
